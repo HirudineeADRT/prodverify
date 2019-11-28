@@ -10,7 +10,7 @@ exports.handler = function (request, response) {
     })
         .then(response => {
             console.log(response.data);
-            response.send({ "message": response.data });           // successful response
+                    // successful response
             /*
     
             WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  
@@ -46,5 +46,5 @@ exports.handler = function (request, response) {
             console.log(err, err.stack); // an error occurred
         });
 
-    
+    response.send({ "message": response.data });   
 }

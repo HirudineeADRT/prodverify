@@ -23,7 +23,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "prodverify/function.js",
-        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst storage = google.storage('v1');\n\nexports.handler = function (request, response) {\n    storage.objects.list({\n        bucket: 'hirutest01',\n        maxResults: 10,\n        prefix: ''\n    })\n        .then(response => {\n            console.log(response.data);\n            response.send({ \"message\": response.data });           // successful response\n            /*\n    \n            WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  \n    \n            response.data = {\n                \"kind\": \"storage#objects\",\n                \"items\": [\n                    {\n                        \"kind\": \"storage#object\",\n                        \"id\": \"<bucket>/<object>/<timestamp>\",\n                        \"selfLink\": \"https://www.googleapis.com/storage/v1/b/<bucket>/o/<object>\",\n                        \"name\": \"<object>\",\n                        \"bucket\": \"<bucket>\",\n                        \"contentType\": \"<content-type>\",\n                        \"timeCreated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"updated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"size\": \"<bytes>\",\n                        \"md5Hash\": \"<hash>\",\n                        \"metadata\": {\n                            \"<key1>\": \"<val1>\",\n                            \"<key2>\": \"<val2>\"\n                        },\n                        \"crc32c\": \"<crc>\",\n                        \"etag\": \"<etag>\"\n                        // , ...\n                    }\n                    // , ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    \n}",
+        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst storage = google.storage('v1');\n\nexports.handler = function (request, response) {\n    storage.objects.list({\n        bucket: 'hirutest01',\n        maxResults: 10,\n        prefix: ''\n    })\n        .then(response => {\n            console.log(response.data);\n                    // successful response\n            /*\n    \n            WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  \n    \n            response.data = {\n                \"kind\": \"storage#objects\",\n                \"items\": [\n                    {\n                        \"kind\": \"storage#object\",\n                        \"id\": \"<bucket>/<object>/<timestamp>\",\n                        \"selfLink\": \"https://www.googleapis.com/storage/v1/b/<bucket>/o/<object>\",\n                        \"name\": \"<object>\",\n                        \"bucket\": \"<bucket>\",\n                        \"contentType\": \"<content-type>\",\n                        \"timeCreated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"updated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"size\": \"<bytes>\",\n                        \"md5Hash\": \"<hash>\",\n                        \"metadata\": {\n                            \"<key1>\": \"<val1>\",\n                            \"<key2>\": \"<val2>\"\n                        },\n                        \"crc32c\": \"<crc>\",\n                        \"etag\": \"<etag>\"\n                        // , ...\n                    }\n                    // , ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    response.send({ \"message\": response.data });   \n}",
         "config": {
           "runtime": "nodejs8",
           "timeout": 60,
@@ -116,6 +116,12 @@
           "version": "29.0.0",
           "dev": false,
           "notRemovable": false
+        },
+        "jimp": {
+          "name": "jimp",
+          "version": "0.9.3",
+          "dev": false,
+          "language": "javascript"
         }
       }
     }
@@ -129,7 +135,7 @@
     "platformRegions": {
       "AWS": "us-east-1"
     },
-    "lastSave": 1574929793718
+    "lastSave": 1574932058621
   },
   "VCS_STATE": {
     "provider": "GitHub",
